@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6EACE73F-E2A3-4041-90B4-16428B111983}</ProjectGuid>
+    <ProjectGuid>{FF164DEF-81C1-4EEC-86F9-5527EC4FA353}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DLNP.Entities</RootNamespace>
-    <AssemblyName>DeepLeaningNetworkProject.Entities</AssemblyName>
+    <RootNamespace>DLNP.Math</RootNamespace>
+    <AssemblyName>DeepLearningNetworkProject.Math</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,9 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IConnection.cs" />
-    <Compile Include="INode.cs" />
-    <Compile Include="NodeType.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
