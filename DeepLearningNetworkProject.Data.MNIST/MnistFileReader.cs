@@ -79,7 +79,7 @@ namespace DLNP.Data.MNIST
                     ex);
             }
 
-
+            return mnistFile;
         }
 
 

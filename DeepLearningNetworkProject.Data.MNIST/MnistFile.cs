@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DLNP.Data.MNIST
 {
@@ -12,18 +9,71 @@ namespace DLNP.Data.MNIST
         #region Private Variables
 
 
-
-        private int m_magic1;
-        private int m_numImages;
-        private int m_numRows;
-        private int m_numCols;
-
-        private int m_magic2;
-        private int m_numLabes;
+        private IList<MnistImage> m_images;
 
 
         #endregion
 
+        #region Properties
+
+
+        /// <summary>
+        /// Some number from the images file
+        /// </summary>
+        public int MagicImages { get; set; }
+
+        /// <summary>
+        /// The amount of images in the file
+        /// </summary>
+        public int NumImages { get; set; }
+
+        /// <summary>
+        /// The row count per image
+        /// </summary>
+        public int NumRows { get; set; }
+
+        /// <summary>
+        /// The colum count per image
+        /// </summary>
+        public int NumColums { get; set; }
+
+        /// <summary>
+        /// Some number from the labels file
+        /// </summary>
+        public int MagicLables { get; set; }
+
+        /// <summary>
+        /// The amount of labels in the file
+        /// </summary>
+        public int NumLables { get; set; }
+
+        public IList<MnistImage> Images
+        {
+            get
+            {
+                if (m_images == null)
+                    m_images = new List<MnistImage>();
+                return m_images;
+            }
+        }
+
+
+        #endregion
+
+        #region Constructors
+
+
+
+        /// <summary>
+        /// default constructor
+        /// </summary>
+        public MnistFile()
+        {
+
+        }
+
+
+        #endregion
 
     }
 }
