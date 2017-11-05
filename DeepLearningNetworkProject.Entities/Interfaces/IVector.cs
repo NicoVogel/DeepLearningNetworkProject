@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DLNP.Entities.Interfaces
 {
-    interface IDLNPVector
+    public interface IVector
     {
         /// <summary>
         /// Indexer to get vector components

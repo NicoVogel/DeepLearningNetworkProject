@@ -42,8 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DLNPMathHelper.cs" />
+    <Compile Include="DLNPMatrix.cs" />
     <Compile Include="DLNPVector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Entities\DeepLearningNetworkProject.Entities.csproj">
+      <Project>{CDD36AAA-A952-488A-A857-CC67E963BCF9}</Project>
+      <Name>DeepLearningNetworkProject.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

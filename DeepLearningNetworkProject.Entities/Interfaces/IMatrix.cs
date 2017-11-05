@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DLNP.Entities.Interfaces
 {
-    public interface IDLNPMatrix
+    public interface IMatrix
     {
         
     }
