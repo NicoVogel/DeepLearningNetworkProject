@@ -1,4 +1,4 @@
-﻿using DLNP.Entities.Interfaces;
+﻿using DLNP.Entities.Interfaces.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,28 @@ namespace DLNP.Math
 {
     public class DLNPMatrix : IMatrix
     {
+        #region Private Values
+
+        private double[,] m_components;
+
+        #endregion
+
+        #region Public Properties
+
+        public double this[int m, int n]
+        {
+            get
+            {
+                return m_components[m, n];
+            }
+
+            set
+            {
+                m_components[m, n] = value;
+            }
+        }
+
+        #endregion
 
         #region Constructor
 
@@ -16,6 +38,12 @@ namespace DLNP.Math
         {
 
         }
+
+        #endregion
+
+        #region Operators
+
+
 
         #endregion
     }

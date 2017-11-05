@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DLNP.Entities.Interfaces;
+using DLNP.Entities.Interfaces.Business;
 
 namespace DLNP.Entities.Models
 {

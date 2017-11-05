@@ -1,4 +1,4 @@
-﻿using DLNP.Entities.Interfaces;
+﻿using DLNP.Entities.Interfaces.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -145,7 +145,4 @@ namespace DLNP.Math
         #endregion
 
     }
-}
-
-        
 }

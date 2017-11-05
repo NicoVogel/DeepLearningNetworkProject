@@ -1,5 +1,5 @@
 ﻿using System;
-using DLNP.Entities.Interfaces;
+using DLNP.Entities.Interfaces.Business;
 
 namespace DLNP.Entities.Models 
 {
