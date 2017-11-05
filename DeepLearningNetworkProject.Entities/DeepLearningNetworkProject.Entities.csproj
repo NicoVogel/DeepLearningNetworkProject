@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IDLNPMatrix.cs" />
+    <Compile Include="Interfaces\IDLNPVector.cs" />
     <Compile Include="Interfaces\IConnection.cs" />
     <Compile Include="Interfaces\ILayer.cs" />
     <Compile Include="Interfaces\INode.cs" />
