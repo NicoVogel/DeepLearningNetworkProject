@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\Business\IDLNPMatrix.cs" />
-    <Compile Include="Interfaces\Business\IDLNPVector.cs" />
     <Compile Include="Interfaces\Business\IConnection.cs" />
     <Compile Include="Interfaces\Business\ILayer.cs" />
+    <Compile Include="Interfaces\Business\IMatrix.cs" />
+    <Compile Include="Interfaces\Business\IVector.cs" />
     <Compile Include="Interfaces\Data\IDataManager.cs" />
     <Compile Include="Interfaces\Data\IFileReader.cs" />
     <Compile Include="Interfaces\Data\INetworkInputData.cs" />
