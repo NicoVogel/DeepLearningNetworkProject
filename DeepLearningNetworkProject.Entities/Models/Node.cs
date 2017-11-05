@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DLNP.Entities.Interfaces.Business;
 using DLNP.Entities.Factory;
+using DLNP.Entities.Interfaces.Business.Models;
 
 namespace DLNP.Entities.Models
 {

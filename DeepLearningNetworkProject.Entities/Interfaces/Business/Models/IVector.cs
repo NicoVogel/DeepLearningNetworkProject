@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLNP.Entities.Interfaces.Business
+namespace DLNP.Entities.Interfaces.Business.Models
 {
     public interface IVector
     {

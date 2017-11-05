@@ -5,6 +5,9 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
+// source of the code below. the code was refactored
+// https://jamesmccaffrey.wordpress.com/2013/11/23/reading-the-mnist-data-set-with-c/
+
 namespace DLNP.Data.MNIST
 {
     public class MnistFileReader : IFileReader

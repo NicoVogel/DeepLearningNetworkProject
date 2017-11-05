@@ -1,6 +1,6 @@
 ﻿
 
-namespace DLNP.Entities.Interfaces.Business
+namespace DLNP.Entities.Interfaces.Business.Models
 {
     public interface IConnection
     {

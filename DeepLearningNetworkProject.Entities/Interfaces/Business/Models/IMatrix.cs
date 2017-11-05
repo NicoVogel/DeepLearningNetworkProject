@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLNP.Business
+namespace DLNP.Entities.Interfaces.Business.Models
 {
-    public class Class1
+    public interface IMatrix
     {
+        
     }
 }

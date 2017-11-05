@@ -1,9 +1,4 @@
-﻿using DLNP.Entities.Interfaces.Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DLNP.Entities.Interfaces.Business.Models;
 
 namespace DLNP.Math
 {

@@ -42,15 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory\BasicFactory.cs" />
-    <Compile Include="Interfaces\Business\IConnection.cs" />
-    <Compile Include="Interfaces\Business\ILayer.cs" />
-    <Compile Include="Interfaces\Business\IMatrix.cs" />
-    <Compile Include="Interfaces\Business\IVector.cs" />
+    <Compile Include="Interfaces\Business\IProgramController.cs" />
+    <Compile Include="Interfaces\Business\Models\IConnection.cs" />
+    <Compile Include="Interfaces\Business\Models\ILayer.cs" />
+    <Compile Include="Interfaces\Business\Models\IMatrix.cs" />
+    <Compile Include="Interfaces\Business\Models\IVector.cs" />
     <Compile Include="Interfaces\Data\IDataManager.cs" />
     <Compile Include="Interfaces\Data\IFileReader.cs" />
     <Compile Include="Interfaces\Data\INetworkInputData.cs" />
-    <Compile Include="Interfaces\Business\INode.cs" />
-    <Compile Include="Interfaces\Business\INetwork.cs" />
+    <Compile Include="Interfaces\Business\Models\INode.cs" />
+    <Compile Include="Interfaces\Business\Models\INetwork.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\NetworkInputData.cs" />
     <Compile Include="Models\Node.cs" />
