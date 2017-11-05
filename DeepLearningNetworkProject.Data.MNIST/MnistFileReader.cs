@@ -1,9 +1,9 @@
 ﻿
 using DLNP.Entities.Interfaces.Data;
+using DLNP.Entities.Factory;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using DLNP.Entities.Factory;
 
 namespace DLNP.Data.MNIST
 {
@@ -14,14 +14,27 @@ namespace DLNP.Data.MNIST
 
 
 
+        /// <summary>
+        /// default constructor
+        /// </summary>
+        public MnistFileReader()
+        {
+
+        }
+
 
         #endregion
-
 
         #region Public Methods
 
 
 
+        /// <summary>
+        /// reads the test data from idx files from the MNIST database
+        /// </summary>
+        /// <param name="imagesPath"></param>
+        /// <param name="lablesPath"></param>
+        /// <returns></returns>
         public IList<INetworkInputData> ReadFile(String imagesPath, String lablesPath)
         {
             IList<INetworkInputData> networkData = null;
@@ -70,6 +83,12 @@ namespace DLNP.Data.MNIST
 
 
 
+        /// <summary>
+        /// read the data from each image 
+        /// </summary>
+        /// <param name="brLabels"></param>
+        /// <param name="brImages"></param>
+        /// <returns></returns>
         private IList<INetworkInputData> readFileInformation(BinaryReader brLabels, BinaryReader brImages)
         {
             var networkData = BusinessLayerFactory.CreateList<INetworkInputData>();
@@ -82,8 +101,9 @@ namespace DLNP.Data.MNIST
 
             int magic2 = brLabels.ReadInt32();
             int numLabels = brLabels.ReadInt32();
-            
-            if(numImages != numLabels)
+
+            if (numImages != numLabels)
+                throw new IndexOutOfRangeException("The image and label count from the file headers is not equal.");
 
 
             // each test image
@@ -96,6 +116,8 @@ namespace DLNP.Data.MNIST
                 {
                     for (int j = 0; j < numCols; ++j)
                     {
+                        // to get a number between 0.0 and 1.0
+                        // the biggest byte number is 255, so this is the denominator
                         dataSet.ImageNumbers[i][j] = brImages.ReadByte() / 255.0;
                     }
                 }
@@ -124,9 +146,6 @@ namespace DLNP.Data.MNIST
         
 
         #endregion
-
-
-
-
+        
     }
 }
