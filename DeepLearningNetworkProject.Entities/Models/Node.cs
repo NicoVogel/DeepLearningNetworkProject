@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DLNP.Entities.Interfaces.Business;
+using DLNP.Entities.Factory;
 
 namespace DLNP.Entities.Models
 {
@@ -41,7 +42,7 @@ namespace DLNP.Entities.Models
             get
             {
                 if (m_connections == null)
-                    m_connections = new List<IConnection>();
+                    m_connections = BusinessLayerFactory.CreateList<IConnection>();
                 return m_connections;
             }
         }

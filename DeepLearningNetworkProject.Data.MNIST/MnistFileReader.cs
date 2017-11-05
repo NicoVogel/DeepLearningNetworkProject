@@ -3,7 +3,7 @@ using DLNP.Entities.Interfaces.Data;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using DLNP.Entities.Models;
+using DLNP.Entities.Factory;
 
 namespace DLNP.Data.MNIST
 {
@@ -25,23 +25,24 @@ namespace DLNP.Data.MNIST
         public IList<INetworkInputData> ReadFile(String imagesPath, String lablesPath)
         {
             IList<INetworkInputData> networkData = null;
+            FileStream ifsLabels = null;
+            FileStream ifsImages = null;
+            BinaryReader brLabels = null;
+            BinaryReader brImages = null;
+
 
             try
             {
                 Console.WriteLine(String.Format("Start reading the MNIST Files. Images file path: {0}, Lables file path: {1}", imagesPath, lablesPath));
                 
-                var ifsLabels = new FileStream(lablesPath, FileMode.Open); // test labels
-                var ifsImages = new FileStream(imagesPath, FileMode.Open); // test images
+                ifsLabels = new FileStream(lablesPath, FileMode.Open); // test labels
+                ifsImages = new FileStream(imagesPath, FileMode.Open); // test images
 
-                var brLabels = new BinaryReader(ifsLabels);
-                var brImages = new BinaryReader(ifsImages);
+                brLabels = new BinaryReader(ifsLabels);
+                brImages = new BinaryReader(ifsImages);
 
                 networkData = readFileInformation(brLabels, brImages);
 
-                ifsImages.Close();
-                brImages.Close();
-                ifsLabels.Close();
-                brLabels.Close();
 
                 Console.WriteLine("\nEnd\n");
             }
@@ -53,6 +54,10 @@ namespace DLNP.Data.MNIST
                         "Failed to load the images and labes from the given paths. Images file path: {0}, Lables file path: {1}, Exception message: {2}", 
                         imagesPath, lablesPath, ex.Message), 
                     ex);
+            }
+            finally
+            {
+                closeIfNotNull(ifsImages, brLabels, ifsLabels, brLabels);
             }
 
             return networkData;
@@ -67,7 +72,7 @@ namespace DLNP.Data.MNIST
 
         private IList<INetworkInputData> readFileInformation(BinaryReader brLabels, BinaryReader brImages)
         {
-            IList<INetworkInputData> networkData = new List<INetworkInputData>();
+            var networkData = BusinessLayerFactory.CreateList<INetworkInputData>();
 
 
             int magic1 = brImages.ReadInt32(); // discard
@@ -77,27 +82,26 @@ namespace DLNP.Data.MNIST
 
             int magic2 = brLabels.ReadInt32();
             int numLabels = brLabels.ReadInt32();
+            
+            if(numImages != numLabels)
 
-
-            byte[][] pixels = new byte[28][];
-            for (int i = 0; i < pixels.Length; ++i)
-                pixels[i] = new byte[28];
 
             // each test image
             for (int di = 0; di < numImages; ++di)
             {
-                INetworkInputData = new NetworkInputData();
-                for (int i = 0; i < 28; ++i)
+                var dataSet = DataLayerFactory.CreateNetworkInputData();
+                dataSet.initDoubleArray(numRows, numCols);
+
+                for (int i = 0; i < numRows; ++i)
                 {
-                    for (int j = 0; j < 28; ++j)
+                    for (int j = 0; j < numCols; ++j)
                     {
-                        byte b = brImages.ReadByte();
-                        pixels[i][j] = b;
+                        dataSet.ImageNumbers[i][j] = brImages.ReadByte() / 255.0;
                     }
                 }
-
-                byte lbl = brLabels.ReadByte();
-
+                
+                dataSet.ExpectedResult = brLabels.ReadByte();
+                networkData.Add(dataSet);
             } // each image
 
 
@@ -105,6 +109,19 @@ namespace DLNP.Data.MNIST
         }
 
 
+        /// <summary>
+        /// dispose all parameter objects which are not null
+        /// </summary>
+        /// <param name="dispObjs"></param>
+        private void closeIfNotNull(params IDisposable[] dispObjs)
+        {
+            foreach (var dispObj in dispObjs)
+            {
+                if (dispObj != null)
+                    dispObj.Dispose();
+            }
+        }
+        
 
         #endregion
 
