@@ -42,7 +42,7 @@ namespace DLNP.Entities.Models
             get
             {
                 if (m_connections == null)
-                    m_connections = BusinessLayerFactory.CreateList<IConnection>();
+                    m_connections = BasicFactory.CreateList<IConnection>();
                 return m_connections;
             }
         }

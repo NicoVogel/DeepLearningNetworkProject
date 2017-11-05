@@ -10,6 +10,19 @@ namespace DLNP.Data.MNIST
     public class MnistFileReader : IFileReader
     {
 
+        #region Properties
+
+
+
+        public string Extension
+        {
+            get { return "idx"; }
+        }
+
+
+
+        #endregion
+
         #region Constructors
 
 
@@ -91,7 +104,7 @@ namespace DLNP.Data.MNIST
         /// <returns></returns>
         private IList<INetworkInputData> readFileInformation(BinaryReader brLabels, BinaryReader brImages)
         {
-            var networkData = BusinessLayerFactory.CreateList<INetworkInputData>();
+            var networkData = BasicFactory.CreateList<INetworkInputData>();
 
 
             int magic1 = brImages.ReadInt32(); // discard
@@ -109,7 +122,7 @@ namespace DLNP.Data.MNIST
             // each test image
             for (int di = 0; di < numImages; ++di)
             {
-                var dataSet = DataLayerFactory.CreateNetworkInputData();
+                var dataSet = BasicFactory.CreateNetworkInputData();
                 dataSet.initDoubleArray(numRows, numCols);
 
                 for (int i = 0; i < numRows; ++i)

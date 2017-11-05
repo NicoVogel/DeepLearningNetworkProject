@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDD36AAA-A952-488A-A857-CC67E963BCF9}</ProjectGuid>
+    <ProjectGuid>{446F1A38-12DD-4380-B4AD-44F68A5A1452}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DLNP.Entities</RootNamespace>
-    <AssemblyName>DeepLearningNetworkProject.Entities</AssemblyName>
+    <RootNamespace>DLNP.Factories</RootNamespace>
+    <AssemblyName>DeepLearningNetworkProject.Factories</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,24 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\BasicFactory.cs" />
-    <Compile Include="Interfaces\Business\IConnection.cs" />
-    <Compile Include="Interfaces\Business\ILayer.cs" />
-    <Compile Include="Interfaces\Business\IMatrix.cs" />
-    <Compile Include="Interfaces\Business\IVector.cs" />
-    <Compile Include="Interfaces\Data\IDataManager.cs" />
-    <Compile Include="Interfaces\Data\IFileReader.cs" />
-    <Compile Include="Interfaces\Data\INetworkInputData.cs" />
-    <Compile Include="Interfaces\Business\INode.cs" />
-    <Compile Include="Interfaces\Business\INetwork.cs" />
-    <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\NetworkInputData.cs" />
-    <Compile Include="Models\Node.cs" />
-    <Compile Include="NodeType.cs" />
+    <Compile Include="BusinessLayerfactory.cs" />
+    <Compile Include="DataLayerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\Presentation\" />
+    <ProjectReference Include="..\DeepLearningNetworkProject.Data.MNIST\DeepLearningNetworkProject.Data.MNIST.csproj">
+      <Project>{F58CDF4F-0E73-435F-888B-9E6AD1522457}</Project>
+      <Name>DeepLearningNetworkProject.Data.MNIST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Entities\DeepLearningNetworkProject.Entities.csproj">
+      <Project>{CDD36AAA-A952-488A-A857-CC67E963BCF9}</Project>
+      <Name>DeepLearningNetworkProject.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
