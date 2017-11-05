@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DeepLeaningNetworkProject.Entities")]
+[assembly: AssemblyTitle("DeepLearningNetworkProject.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DeepLeaningNetworkProject.Entities")]
+[assembly: AssemblyProduct("DeepLearningNetworkProject.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6eace73f-e2a3-4041-90b4-16428b111983")]
+[assembly: Guid("2a18a2dc-3557-4939-922a-e9373facbfe8")]
 
 // Version information for an assembly consists of the following four values:
 //
