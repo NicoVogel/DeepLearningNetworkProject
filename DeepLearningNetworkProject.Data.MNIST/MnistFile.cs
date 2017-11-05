@@ -1,4 +1,5 @@
 ﻿
+using DLNP.Entities.Interfaces.Data;
 using System.Collections.Generic;
 
 namespace DLNP.Data.MNIST
@@ -9,7 +10,7 @@ namespace DLNP.Data.MNIST
         #region Private Variables
 
 
-        private IList<MnistImage> m_images;
+        private IList<INetworkInputData> m_images;
 
 
         #endregion
@@ -47,12 +48,12 @@ namespace DLNP.Data.MNIST
         /// </summary>
         public int NumLables { get; set; }
 
-        public IList<MnistImage> Images
+        public IList<INetworkInputData> Images
         {
             get
             {
                 if (m_images == null)
-                    m_images = new List<MnistImage>();
+                    m_images = new List<INetworkInputData>();
                 return m_images;
             }
         }

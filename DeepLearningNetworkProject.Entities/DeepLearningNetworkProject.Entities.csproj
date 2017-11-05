@@ -41,19 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IDLNPMatrix.cs" />
-    <Compile Include="Interfaces\IDLNPVector.cs" />
-    <Compile Include="Interfaces\IConnection.cs" />
-    <Compile Include="Interfaces\ILayer.cs" />
-    <Compile Include="Interfaces\INetworkInputData.cs" />
-    <Compile Include="Interfaces\INode.cs" />
-    <Compile Include="Interfaces\INetwork.cs" />
+    <Compile Include="Interfaces\Business\IDLNPMatrix.cs" />
+    <Compile Include="Interfaces\Business\IDLNPVector.cs" />
+    <Compile Include="Interfaces\Business\IConnection.cs" />
+    <Compile Include="Interfaces\Business\ILayer.cs" />
+    <Compile Include="Interfaces\Data\IDLNPInputRader.cs" />
+    <Compile Include="Interfaces\Data\INetworkInputData.cs" />
+    <Compile Include="Interfaces\Business\INode.cs" />
+    <Compile Include="Interfaces\Business\INetwork.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="NodeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\Presentation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

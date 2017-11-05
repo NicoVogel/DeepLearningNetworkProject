@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLNP.Entities.Interfaces
+namespace DLNP.Entities.Interfaces.Business
 {
     public interface IDLNPMatrix
     {
