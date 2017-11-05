@@ -1,4 +1,4 @@
-﻿<Application x:Class="DeepLearningNetworkProject.App"
+﻿<Application x:Class="DLNP.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DeepLearningNetworkProject"
