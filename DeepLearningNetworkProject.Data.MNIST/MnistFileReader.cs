@@ -24,7 +24,7 @@ namespace DLNP.Data.MNIST
 
         public IList<INetworkInputData> ReadFile(String imagesPath, String lablesPath)
         {
-            IList<INetworkInputData> networkData = new List<INetworkInputData>();
+            IList<INetworkInputData> networkData = null;
 
             try
             {
@@ -36,34 +36,7 @@ namespace DLNP.Data.MNIST
                 var brLabels = new BinaryReader(ifsLabels);
                 var brImages = new BinaryReader(ifsImages);
 
-                int magic1 = brImages.ReadInt32(); // discard
-                int numImages = brImages.ReadInt32();
-                int numRows = brImages.ReadInt32();
-                int numCols = brImages.ReadInt32();
-
-                int magic2 = brLabels.ReadInt32();
-                int numLabels = brLabels.ReadInt32();
-
-                
-                byte[][] pixels = new byte[28][];
-                for (int i = 0; i < pixels.Length; ++i)
-                    pixels[i] = new byte[28];
-
-                // each test image
-                for (int di = 0; di < numImages; ++di)
-                {
-                    for (int i = 0; i < 28; ++i)
-                    {
-                        for (int j = 0; j < 28; ++j)
-                        {
-                            byte b = brImages.ReadByte();
-                            pixels[i][j] = b;
-                        }
-                    }
-
-                    byte lbl = brLabels.ReadByte();
-                    
-                } // each image
+                networkData = readFileInformation(brLabels, brImages);
 
                 ifsImages.Close();
                 brImages.Close();
@@ -88,6 +61,52 @@ namespace DLNP.Data.MNIST
 
         #endregion
 
+        #region Private Methods
+
+
+
+        private IList<INetworkInputData> readFileInformation(BinaryReader brLabels, BinaryReader brImages)
+        {
+            IList<INetworkInputData> networkData = new List<INetworkInputData>();
+
+
+            int magic1 = brImages.ReadInt32(); // discard
+            int numImages = brImages.ReadInt32();
+            int numRows = brImages.ReadInt32();
+            int numCols = brImages.ReadInt32();
+
+            int magic2 = brLabels.ReadInt32();
+            int numLabels = brLabels.ReadInt32();
+
+
+            byte[][] pixels = new byte[28][];
+            for (int i = 0; i < pixels.Length; ++i)
+                pixels[i] = new byte[28];
+
+            // each test image
+            for (int di = 0; di < numImages; ++di)
+            {
+                INetworkInputData = new NetworkInputData();
+                for (int i = 0; i < 28; ++i)
+                {
+                    for (int j = 0; j < 28; ++j)
+                    {
+                        byte b = brImages.ReadByte();
+                        pixels[i][j] = b;
+                    }
+                }
+
+                byte lbl = brLabels.ReadByte();
+
+            } // each image
+
+
+            return networkData;
+        }
+
+
+
+        #endregion
 
 
 

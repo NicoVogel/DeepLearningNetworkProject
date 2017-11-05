@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\BusinessLayerFactory.cs" />
+    <Compile Include="Factory\DataLayerFactory.cs" />
     <Compile Include="Interfaces\Business\IConnection.cs" />
     <Compile Include="Interfaces\Business\ILayer.cs" />
     <Compile Include="Interfaces\Business\IMatrix.cs" />
