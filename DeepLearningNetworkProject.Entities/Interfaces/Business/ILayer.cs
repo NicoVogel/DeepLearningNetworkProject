@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DLNP.Entities.Interfaces
+namespace DLNP.Entities.Interfaces.Business
 {
     public interface ILayer
     {

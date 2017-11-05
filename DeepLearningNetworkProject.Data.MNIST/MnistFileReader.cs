@@ -10,7 +10,12 @@ namespace DLNP.Data.MNIST
     public class MnistFileReader
     {
 
+        #region Constructors
 
+
+
+
+        #endregion
 
 
         #region Public Methods
