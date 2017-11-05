@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using DLNP.Entities.Interfaces.Data;
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using DLNP.Entities.Models;
 
 namespace DLNP.Data.MNIST
 {
-    public class MnistFileReader
+    public class MnistFileReader : IFileReader
     {
 
         #region Constructors
@@ -21,9 +21,10 @@ namespace DLNP.Data.MNIST
         #region Public Methods
 
 
-        public MnistFile ReadFile(String imagesPath, String lablesPath)
+
+        public IList<INetworkInputData> ReadFile(String imagesPath, String lablesPath)
         {
-            var mnistFile = new MnistFile();
+            IList<INetworkInputData> networkData = new List<INetworkInputData>();
 
             try
             {
@@ -43,12 +44,13 @@ namespace DLNP.Data.MNIST
                 int magic2 = brLabels.ReadInt32();
                 int numLabels = brLabels.ReadInt32();
 
+                
                 byte[][] pixels = new byte[28][];
                 for (int i = 0; i < pixels.Length; ++i)
                     pixels[i] = new byte[28];
 
                 // each test image
-                for (int di = 0; di < 10000; ++di)
+                for (int di = 0; di < numImages; ++di)
                 {
                     for (int i = 0; i < 28; ++i)
                     {
@@ -60,11 +62,7 @@ namespace DLNP.Data.MNIST
                     }
 
                     byte lbl = brLabels.ReadByte();
-
-                    DigitImage dImage =
-                      new DigitImage(pixels, lbl);
-                    Console.WriteLine(dImage.ToString());
-                    Console.ReadLine();
+                    
                 } // each image
 
                 ifsImages.Close();
@@ -84,11 +82,14 @@ namespace DLNP.Data.MNIST
                     ex);
             }
 
-            return mnistFile;
+            return networkData;
         }
 
 
         #endregion
+
+
+
 
 
     }
