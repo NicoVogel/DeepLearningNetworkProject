@@ -8,5 +8,16 @@ namespace DLNP.Entities.Interfaces.Business
 {
     interface IDLNPVector
     {
+        /// <summary>
+        /// Indexer to get vector components
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        double this[int index] { get; set; }
+
+        /// <summary>
+        /// Number of components this vector contains
+        /// </summary>
+        int Size { get; }
     }
 }
