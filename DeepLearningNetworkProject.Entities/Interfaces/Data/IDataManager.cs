@@ -1,4 +1,5 @@
 ﻿
+using DLNP.Entities.Interfaces.Business.Models;
 using System;
 using System.Collections.Generic;
 
@@ -21,5 +22,18 @@ namespace DLNP.Entities.Interfaces.Data
         /// <returns></returns>
         IList<INetworkInputData> ReadFile(String extension, String imagePath, String labelPath);
 
+        /// <summary>
+        /// Load a network file
+        /// </summary>
+        /// <param name="networkPath"></param>
+        /// <returns></returns>
+        INetwork LoadNetwork(String networkPath);
+
+        /// <summary>
+        /// Save network
+        /// </summary>
+        /// <param name="networkPath"></param>
+        /// <param name="network"></param>
+        void SaveNetwork(String networkPath, INetwork network);
     }
 }

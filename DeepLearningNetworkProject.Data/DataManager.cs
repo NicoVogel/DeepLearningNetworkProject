@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DLNP.Entities.Interfaces.Data;
 using System.Linq;
 using DLNP.Factory;
+using DLNP.Entities.Interfaces.Business.Models;
 
 namespace DLNP.Data
 {
@@ -13,6 +14,7 @@ namespace DLNP.Data
 
 
         private IList<IFileReader> m_fileReader;
+        private INetworkFileManager m_nwtFileMgr;
 
 
         #endregion
@@ -28,7 +30,7 @@ namespace DLNP.Data
                 return FileReader.Select(x => x.Extension).ToList();
             }
         }
-        
+
         public IList<IFileReader> FileReader
         {
             get
@@ -36,6 +38,16 @@ namespace DLNP.Data
                 if (m_fileReader == null)
                     m_fileReader = DataLayerFactory.GetAllFileReader();
                 return m_fileReader;
+            }
+        }
+
+        public INetworkFileManager NetworkFileMgr
+        {
+            get
+            {
+                if (m_nwtFileMgr == null)
+                    m_nwtFileMgr = DataLayerFactory.CreateNetworkFileManager();
+                return m_nwtFileMgr;
             }
         }
 
@@ -70,6 +82,18 @@ namespace DLNP.Data
                 throw new ArgumentException(String.Format("There is no implementation for the given extension: '{0}'", extension));
 
             return fileReader.ReadFile(imagePath, labelPath);
+        }
+
+
+        public INetwork LoadNetwork(string networkPath)
+        {
+            return this.NetworkFileMgr.LoadNetwork(networkPath);
+        }
+
+
+        public void SaveNetwork(string networkPath, INetwork network)
+        {
+            this.NetworkFileMgr.SaveNetwork(networkPath, network);
         }
 
 
