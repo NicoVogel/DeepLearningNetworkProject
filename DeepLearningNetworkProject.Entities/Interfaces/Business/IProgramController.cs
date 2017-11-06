@@ -24,7 +24,7 @@ namespace DLNP.Entities.Interfaces.Business
         /// </summary>
         /// <param name="imagePath"></param>
         /// <param name="labelPath"></param>
-        void LoadFile(String imagePath, String labelPath);
+        void LoadFile(String extension, String imagePath, String labelPath);
 
         /// <summary>
         /// Save the current state of the network without the training data
@@ -47,5 +47,12 @@ namespace DLNP.Entities.Interfaces.Business
         /// Stop the training process
         /// </summary>
         void StopTraining();
+
+        /// <summary>
+        /// creates a new network with random numbers
+        /// </summary>
+        /// <param name="layerCount">the list length is the layer count and each value is the amount of nodes per layer</param>
+        void InizialiseNetwork(IList<int> layerCount);
+
     }
 }

@@ -62,7 +62,7 @@ namespace DLNP.Factory
 
         public IProgramController CreateProgramController()
         {
-            return new ProgramController(this.EntityFactory, this.DataFactory);
+            return new ProgramController(this.EntityFactory, this.BusinessFactory);
         }
     }
 }

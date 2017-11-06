@@ -2,6 +2,8 @@
 using DLNP.Entities.Interfaces.Factories;
 using DLNP.Entities.Models;
 using System.Collections.Generic;
+using DLNP.Entities.Interfaces.Business.Models;
+using System;
 
 namespace DLNP.Entities.Factory
 {
@@ -41,6 +43,12 @@ namespace DLNP.Entities.Factory
         public INetworkInputData CreateNetworkInputData()
         {
             return new NetworkInputData();
+        }
+
+        
+        public INetwork CreateEmptyNetwork()
+        {
+            return null;
         }
 
     }

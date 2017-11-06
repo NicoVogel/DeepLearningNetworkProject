@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using DLNP.Entities.Interfaces.Data;
 using System.Linq;
-using DLNP.Factory;
 using DLNP.Entities.Interfaces.Business.Models;
 using DLNP.Entities.Interfaces.Factories;
 
