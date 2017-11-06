@@ -4,6 +4,7 @@ using DLNP.Entities.Factory;
 using System;
 using System.IO;
 using System.Collections.Generic;
+using DLNP.Entities.Interfaces.Factories;
 
 // source of the code below. the code was refactored
 // https://jamesmccaffrey.wordpress.com/2013/11/23/reading-the-mnist-data-set-with-c/
@@ -12,6 +13,14 @@ namespace DLNP.Data.MNIST
 {
     public class MnistFileReader : IFileReader
     {
+
+        #region Private Values
+        
+
+        private IEntityFactory m_bf;
+
+
+        #endregion
 
         #region Properties
 
@@ -33,9 +42,9 @@ namespace DLNP.Data.MNIST
         /// <summary>
         /// default constructor
         /// </summary>
-        public MnistFileReader()
+        public MnistFileReader(IEntityFactory bf)
         {
-
+            this.m_bf = bf;
         }
 
 
@@ -107,7 +116,7 @@ namespace DLNP.Data.MNIST
         /// <returns></returns>
         private IList<INetworkInputData> readFileInformation(BinaryReader brLabels, BinaryReader brImages)
         {
-            var networkData = BasicFactory.CreateList<INetworkInputData>();
+            var networkData = m_bf.CreateList<INetworkInputData>();
 
 
             int magic1 = brImages.ReadInt32(); // discard
@@ -125,7 +134,7 @@ namespace DLNP.Data.MNIST
             // each test image
             for (int di = 0; di < numImages; ++di)
             {
-                var dataSet = BasicFactory.CreateNetworkInputData();
+                var dataSet = m_bf.CreateNetworkInputData();
                 dataSet.initDoubleArray(numRows, numCols);
 
                 for (int i = 0; i < numRows; ++i)

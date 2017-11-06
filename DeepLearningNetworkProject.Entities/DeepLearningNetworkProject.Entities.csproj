@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\BasicFactory.cs" />
+    <Compile Include="Factory\EntityFactory.cs" />
+    <Compile Include="Interfaces\Factories\Connection\IBusinessFactoryExtension.cs" />
+    <Compile Include="Interfaces\Factories\Connection\IDataFactoryExtension.cs" />
+    <Compile Include="Interfaces\Factories\IBusinessFactory.cs" />
+    <Compile Include="Interfaces\Factories\IDataFactory.cs" />
     <Compile Include="Interfaces\Business\IProgramController.cs" />
     <Compile Include="Interfaces\Business\Models\IConnection.cs" />
     <Compile Include="Interfaces\Business\Models\ILayer.cs" />
@@ -53,6 +57,8 @@
     <Compile Include="Interfaces\Data\INetworkInputData.cs" />
     <Compile Include="Interfaces\Business\Models\INode.cs" />
     <Compile Include="Interfaces\Business\Models\INetwork.cs" />
+    <Compile Include="Interfaces\Factories\IEntityFactory.cs" />
+    <Compile Include="Interfaces\Factories\IPresentationFactory.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\NetworkInputData.cs" />
     <Compile Include="Models\Node.cs" />

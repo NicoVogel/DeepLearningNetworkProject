@@ -4,6 +4,7 @@ using DLNP.Entities.Interfaces.Data;
 using System.Linq;
 using DLNP.Factory;
 using DLNP.Entities.Interfaces.Business.Models;
+using DLNP.Entities.Interfaces.Factories;
 
 namespace DLNP.Data
 {
@@ -13,6 +14,7 @@ namespace DLNP.Data
         #region Private Varaibles
 
 
+        private IDataFactory m_df;
         private IList<IFileReader> m_fileReader;
         private INetworkFileManager m_nwtFileMgr;
 
@@ -36,7 +38,7 @@ namespace DLNP.Data
             get
             {
                 if (m_fileReader == null)
-                    m_fileReader = DataLayerFactory.GetAllFileReader();
+                    m_fileReader = m_df.GetAllFileReader();
                 return m_fileReader;
             }
         }
@@ -46,7 +48,7 @@ namespace DLNP.Data
             get
             {
                 if (m_nwtFileMgr == null)
-                    m_nwtFileMgr = DataLayerFactory.CreateNetworkFileManager();
+                    m_nwtFileMgr = m_df.CreateNetworkFileManager();
                 return m_nwtFileMgr;
             }
         }
@@ -63,9 +65,9 @@ namespace DLNP.Data
         /// <summary>
         /// default constructor
         /// </summary>
-        public DataManager()
+        public DataManager(IDataFactory df)
         {
-                
+            this.m_df = df;
         }
 
 

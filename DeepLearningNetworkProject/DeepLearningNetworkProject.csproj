@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Factory\PresentationFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -95,6 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Business\DeepLearningNetworkProject.Business.csproj">
+      <Project>{691f36a4-de24-4b18-a663-1943e19082c7}</Project>
+      <Name>DeepLearningNetworkProject.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Entities\DeepLearningNetworkProject.Entities.csproj">
+      <Project>{CDD36AAA-A952-488A-A857-CC67E963BCF9}</Project>
+      <Name>DeepLearningNetworkProject.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
