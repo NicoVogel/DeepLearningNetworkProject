@@ -11,8 +11,8 @@ namespace DLNP.Entities.Interfaces.Business.Models
         /// <summary>
         /// Indexer to get vector components
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="index">component</param>
+        /// <returns>Value of the specified vector component</returns>
         double this[int index] { get; set; }
 
         /// <summary>

@@ -43,6 +43,14 @@ namespace DLNP.Math
 
         #region Operators
 
+        /// <summary>
+        /// Multiplication of two matrices.
+        /// Colum size from matrix a must equal row size from matrix b.
+        /// Row size from matrix a must equal column size from matrix b.
+        /// </summary>
+        /// <param name="a">First matrix</param>
+        /// <param name="b">Second matrix</param>
+        /// <returns>A matrix with row size of matrix a and column size of matrix b</returns>
         public static DLNPMatrix operator *(DLNPMatrix a, DLNPMatrix b)
         {
             if(a.Columns == b.Rows && a.Rows == b.Columns)
@@ -68,6 +76,12 @@ namespace DLNP.Math
             }
         }
 
+        /// <summary>
+        /// Multiplication of matrix and vector. Vector size must be equal to matrix columns.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>Vector modified by a matrix</returns>
         public static DLNPVector operator *(DLNPMatrix a, DLNPVector b)
         {
             if(a.Columns == b.Size)

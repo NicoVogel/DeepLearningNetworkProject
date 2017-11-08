@@ -14,6 +14,11 @@ namespace DLNP.Math
 
         #region Public Properties
 
+        /// <summary>
+        /// Indexer for vector components
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public double this[int index]
         {
             get
@@ -27,6 +32,9 @@ namespace DLNP.Math
             }
         }
 
+        /// <summary>
+        /// Size of this vector
+        /// </summary>
         public int Size
         {
             get
