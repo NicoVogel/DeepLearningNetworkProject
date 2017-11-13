@@ -46,7 +46,7 @@ namespace DLNP.Business
             get { return m_net; }
             private set { m_net = value; }
         }
-        
+
         public IDataManager DataManager
         {
             get
@@ -57,6 +57,25 @@ namespace DLNP.Business
             }
         }
 
+        public IBusinessFactory BusinessFactory
+        {
+            get { return m_bf; }
+        }
+
+        public IEntityFactory EntityFactory
+        {
+            get { return m_ef; }
+        }
+
+        public int MaxValueForBias
+        {
+            get { return 10; }
+        }
+
+        public int MaxValueForWeight
+        {
+            get { return 10; }
+        }
 
 
         #endregion
@@ -92,7 +111,7 @@ namespace DLNP.Business
 
             if (String.IsNullOrEmpty(extension))
                 throw new ArgumentNullException(nameof(extension), "Cannot load training data with an empty file extension.");
-            
+
             if (String.IsNullOrEmpty(imagePath))
                 throw new ArgumentNullException(nameof(imagePath), "Cannot load training data with an empty image file path.");
 
@@ -104,7 +123,7 @@ namespace DLNP.Business
 
 
             var data = this.DataManager.ReadFile(extension, imagePath, labelPath);
-            
+
         }
 
         public void LoadNetwork(string networkPath)
@@ -124,7 +143,7 @@ namespace DLNP.Business
 
             if (this.Network == null)
                 throw new ArgumentNullException(nameof(this.Network), "The network value is null.");
-            
+
             this.DataManager.SaveNetwork(networkPath, this.Network);
         }
 
@@ -140,8 +159,112 @@ namespace DLNP.Business
 
         public void InizialiseNetwork(IList<int> layerCount)
         {
-            
-             
+            checkInizialiseNetworkParameter(layerCount);
+
+            if (checkObserverAllowOverride(this.Network))
+            {
+                this.Network = this.EntityFactory.CreateEmptyNetwork();
+                IList<INode> previousLayer = null;
+
+
+                for (int i = 0; i < layerCount.Count; i++)
+                {
+                    var layer = this.EntityFactory.CreateList<INode>();
+                    var type = getNodeType(i, layerCount.Count);
+
+                    for (int j = 0; j < layerCount[i]; j++)
+                    {
+                        var node = this.EntityFactory.CreateNode();
+                        node.NType = type;
+                        node.Bias = getRandomDouble(this.MaxValueForBias);
+
+                        if (previousLayer != null)
+                        {
+                            foreach (var preNode in previousLayer)
+                            {
+                                var connection = this.EntityFactory.CreateConnection();
+                                connection.FromNode = preNode;
+                                connection.ToNode = node;
+                                connection.Weight = getRandomDouble(this.MaxValueForWeight);
+                                node.Connections.Add(connection);
+                            }
+                        }
+                        layer.Add(node);
+                    }
+
+                    this.Network.Layers.Add(layer);
+                    previousLayer = layer;
+                }
+            }
+
+
+        }
+
+
+
+        #endregion
+
+        #region private method
+
+
+
+        private void checkInizialiseNetworkParameter(IList<int> layerCount)
+        {
+            if (layerCount == null)
+                throw new ArgumentNullException(nameof(layerCount), "Cannot create a network when the parameter which spesifies the netwok buildup is null.");
+
+            if (layerCount.Count < 2)
+                throw new ArgumentOutOfRangeException(nameof(layerCount), "Cannot create a network which has less than two layers.");
+
+            var doesNotHaveAnyNodes = this.EntityFactory.CreateList<int>();
+
+            for (int i = 0; i < layerCount.Count; i++)
+            {
+                if (layerCount[i] <= 0)
+                    doesNotHaveAnyNodes.Add(i);
+            }
+
+            if (doesNotHaveAnyNodes.Count != 0)
+            {
+                throw new ArgumentOutOfRangeException("layer node count", 
+                    "Cannot create a layer which does not have at least one node. The following layer(s) do not have at least one node: " + 
+                    String.Join(", ", doesNotHaveAnyNodes));
+            }
+        }
+        
+        private bool checkObserverAllowOverride(INetwork network)
+        {
+            if(network != null)
+            {
+                // TODO ask observer if it is ok to override the current network
+                network = null;
+            }
+            return true;
+        }
+
+        private Entities.NodeType getNodeType(int currentLayer, int layerCount)
+        {
+            if (currentLayer == 0)
+                return Entities.NodeType.Input;
+            else if ((currentLayer + 1) == layerCount)
+                return Entities.NodeType.Normal;
+            else
+                return Entities.NodeType.Output;
+        }
+
+        /// <summary>
+        /// creates a random double
+        /// </summary>
+        /// <param name="maxValue"></param>
+        /// <returns></returns>
+        private double getRandomDouble(int maxValue)
+        {
+            var randomNumber = new Random();
+            return Double.Parse(
+                randomNumber.Next(maxValue).ToString() + 
+                "." +
+                randomNumber.Next(9) +
+                randomNumber.Next(9));
         }
 
 

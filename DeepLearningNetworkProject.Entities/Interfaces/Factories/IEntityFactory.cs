@@ -24,5 +24,17 @@ namespace DLNP.Entities.Interfaces.Factories
         /// </summary>
         /// <returns></returns>
         INetwork CreateEmptyNetwork();
+
+        /// <summary>
+        /// create a new <see cref="INode"/> object
+        /// </summary>
+        /// <returns></returns>
+        INode CreateNode();
+
+        /// <summary>
+        /// create a new <see cref="Connection"/> object
+        /// </summary>
+        /// <returns></returns>
+        IConnection CreateConnection();
     }
 }

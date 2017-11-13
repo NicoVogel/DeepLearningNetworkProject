@@ -45,10 +45,31 @@ namespace DLNP.Entities.Factory
             return new NetworkInputData();
         }
 
-        
+        /// <summary>
+        /// create a new <see cref="Network"/> object
+        /// </summary>
+        /// <returns></returns>
         public INetwork CreateEmptyNetwork()
         {
-            return null;
+            return new Network(this);
+        }
+
+        /// <summary>
+        /// create a new <see cref="Node"/> object
+        /// </summary>
+        /// <returns></returns>
+        public INode CreateNode()
+        {
+            return new Node(this);
+        }
+
+        /// <summary>
+        /// create a new <see cref="Connection"/> object
+        /// </summary>
+        /// <returns></returns>
+        public IConnection CreateConnection()
+        {
+            return new Connection();
         }
 
     }

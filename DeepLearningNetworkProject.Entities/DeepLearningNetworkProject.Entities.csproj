@@ -59,6 +59,7 @@
     <Compile Include="Interfaces\Factories\IEntityFactory.cs" />
     <Compile Include="Interfaces\Factories\IPresentationFactory.cs" />
     <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\Network.cs" />
     <Compile Include="Models\NetworkInputData.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="NodeType.cs" />
