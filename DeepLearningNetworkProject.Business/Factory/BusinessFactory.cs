@@ -34,7 +34,7 @@ namespace DLNP.Business.Factory
 
         public IEntityFactory EntityFactory
         {
-            get { return m_dfe.EntityFactory; }
+            get { return this.DataFactory.EntityFactory; }
         }
 
 
