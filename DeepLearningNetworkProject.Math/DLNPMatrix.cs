@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using DLNP.Entities.Interfaces.Business.Models;
+using System;
 
 namespace DLNP.Math
 {
