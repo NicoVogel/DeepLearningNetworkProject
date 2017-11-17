@@ -44,6 +44,7 @@
     <Compile Include="DLNPMathHelper.cs" />
     <Compile Include="DLNPMatrix.cs" />
     <Compile Include="DLNPVector.cs" />
+    <Compile Include="Factory\MathFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

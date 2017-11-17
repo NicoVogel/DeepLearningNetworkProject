@@ -57,6 +57,7 @@
     <Compile Include="Interfaces\Business\Models\INode.cs" />
     <Compile Include="Interfaces\Business\Models\INetwork.cs" />
     <Compile Include="Interfaces\Factories\IEntityFactory.cs" />
+    <Compile Include="Interfaces\Factories\IMathFactory.cs" />
     <Compile Include="Interfaces\Factories\IPresentationFactory.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Network.cs" />
