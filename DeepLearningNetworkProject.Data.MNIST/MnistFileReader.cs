@@ -1,27 +1,65 @@
 ﻿
 using DLNP.Entities.Interfaces.Data;
+using DLNP.Entities.Factory;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using DLNP.Entities.Factory;
+using DLNP.Entities.Interfaces.Factories;
+
+// source of the code below. the code was refactored
+// https://jamesmccaffrey.wordpress.com/2013/11/23/reading-the-mnist-data-set-with-c/
 
 namespace DLNP.Data.MNIST
 {
     public class MnistFileReader : IFileReader
     {
 
-        #region Constructors
+        #region Private Values
+        
 
+        private IEntityFactory m_bf;
+
+
+        #endregion
+
+        #region Properties
+
+
+
+        public string Extension
+        {
+            get { return "idx"; }
+        }
 
 
 
         #endregion
 
+        #region Constructors
+
+
+
+        /// <summary>
+        /// default constructor
+        /// </summary>
+        public MnistFileReader(IEntityFactory bf)
+        {
+            this.m_bf = bf;
+        }
+
+
+        #endregion
 
         #region Public Methods
 
 
 
+        /// <summary>
+        /// reads the test data from idx files from the MNIST database
+        /// </summary>
+        /// <param name="imagesPath"></param>
+        /// <param name="lablesPath"></param>
+        /// <returns></returns>
         public IList<INetworkInputData> ReadFile(String imagesPath, String lablesPath)
         {
             IList<INetworkInputData> networkData = null;
@@ -70,9 +108,15 @@ namespace DLNP.Data.MNIST
 
 
 
+        /// <summary>
+        /// read the data from each image 
+        /// </summary>
+        /// <param name="brLabels"></param>
+        /// <param name="brImages"></param>
+        /// <returns></returns>
         private IList<INetworkInputData> readFileInformation(BinaryReader brLabels, BinaryReader brImages)
         {
-            var networkData = BusinessLayerFactory.CreateList<INetworkInputData>();
+            var networkData = m_bf.CreateList<INetworkInputData>();
 
 
             int magic1 = brImages.ReadInt32(); // discard
@@ -82,20 +126,23 @@ namespace DLNP.Data.MNIST
 
             int magic2 = brLabels.ReadInt32();
             int numLabels = brLabels.ReadInt32();
-            
-            if(numImages != numLabels)
+
+            if (numImages != numLabels)
+                throw new IndexOutOfRangeException("The image and label count from the file headers is not equal.");
 
 
             // each test image
             for (int di = 0; di < numImages; ++di)
             {
-                var dataSet = DataLayerFactory.CreateNetworkInputData();
+                var dataSet = m_bf.CreateNetworkInputData();
                 dataSet.initDoubleArray(numRows, numCols);
 
                 for (int i = 0; i < numRows; ++i)
                 {
                     for (int j = 0; j < numCols; ++j)
                     {
+                        // to get a number between 0.0 and 1.0
+                        // the biggest byte number is 255, so this is the denominator
                         dataSet.ImageNumbers[i][j] = brImages.ReadByte() / 255.0;
                     }
                 }
@@ -124,9 +171,6 @@ namespace DLNP.Data.MNIST
         
 
         #endregion
-
-
-
-
+        
     }
 }

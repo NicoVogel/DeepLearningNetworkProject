@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DLNP.Entities.Interfaces.Business;
 using DLNP.Entities.Factory;
+using DLNP.Entities.Interfaces.Business.Models;
+using DLNP.Entities.Interfaces.Factories;
 
 namespace DLNP.Entities.Models
 {
@@ -16,6 +17,7 @@ namespace DLNP.Entities.Models
         private IList<IConnection> m_connections;
         private NodeType m_nType;
         private double m_value;
+        private IEntityFactory m_ef;
 
 
 
@@ -42,7 +44,7 @@ namespace DLNP.Entities.Models
             get
             {
                 if (m_connections == null)
-                    m_connections = BusinessLayerFactory.CreateList<IConnection>();
+                    m_connections = m_ef.CreateList<IConnection>();
                 return m_connections;
             }
         }
@@ -76,9 +78,9 @@ namespace DLNP.Entities.Models
         /// <summary>
         /// default constructor
         /// </summary>
-        public Node()
+        public Node(IEntityFactory ef)
         {
-
+            this.m_ef = ef;
         }
 
 

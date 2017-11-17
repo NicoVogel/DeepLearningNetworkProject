@@ -41,8 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Factory\BusinessFactory.cs" />
+    <Compile Include="ProgramController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Data\DeepLearningNetworkProject.Data.csproj">
+      <Project>{2A18A2DC-3557-4939-922A-E9373FACBFE8}</Project>
+      <Name>DeepLearningNetworkProject.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Entities\DeepLearningNetworkProject.Entities.csproj">
+      <Project>{CDD36AAA-A952-488A-A857-CC67E963BCF9}</Project>
+      <Name>DeepLearningNetworkProject.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

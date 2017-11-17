@@ -41,10 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\DataFactory.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Data.MNIST\DeepLearningNetworkProject.Data.MNIST.csproj">
+      <Project>{F58CDF4F-0E73-435F-888B-9E6AD1522457}</Project>
+      <Name>DeepLearningNetworkProject.Data.MNIST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Data.Network\DeepLearningNetworkProject.Data.Network.csproj">
+      <Project>{306F91E0-6E26-4A56-BF58-AFBB3742D300}</Project>
+      <Name>DeepLearningNetworkProject.Data.Network</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DeepLearningNetworkProject.Entities\DeepLearningNetworkProject.Entities.csproj">
       <Project>{CDD36AAA-A952-488A-A857-CC67E963BCF9}</Project>
       <Name>DeepLearningNetworkProject.Entities</Name>

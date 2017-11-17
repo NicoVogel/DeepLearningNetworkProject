@@ -1,9 +1,5 @@
-﻿using DLNP.Entities.Interfaces.Business;
+﻿using DLNP.Entities.Interfaces.Business.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DLNP.Math
 {
@@ -18,6 +14,11 @@ namespace DLNP.Math
 
         #region Public Properties
 
+        /// <summary>
+        /// Indexer for vector components
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public double this[int index]
         {
             get
@@ -31,6 +32,9 @@ namespace DLNP.Math
             }
         }
 
+        /// <summary>
+        /// Size of this vector
+        /// </summary>
         public int Size
         {
             get
