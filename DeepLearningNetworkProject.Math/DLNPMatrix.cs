@@ -43,7 +43,10 @@ namespace DLNP.Math
 
         #region Operators
 
+        public static DLNPMatrix operator *(DLNPMatrix a, DLNPMatrix b)
+        {
 
+        }
 
         #endregion
     }
