@@ -14,6 +14,7 @@ namespace DLNP.Entities.Models
 
 
         IEntityFactory m_ef;
+        IMathFactory m_mf;
         IList<IList<INode>> m_nodes;
 
 
@@ -54,6 +55,11 @@ namespace DLNP.Entities.Models
             get { return m_ef; }
         }
 
+        public IMathFactory MathFactory
+        {
+            get { return m_mf; }
+        }
+
 
 
         #endregion
@@ -66,13 +72,40 @@ namespace DLNP.Entities.Models
         /// default constructor
         /// </summary>
         /// <param name="ef"></param>
-        public Network(IEntityFactory ef)
+        public Network(IEntityFactory ef, IMathFactory mf)
         {
             this.m_ef = ef;
+
         }
 
 
         #endregion
 
+
+        #region Private Methods
+
+        /// <summary>
+        /// Get a vector with all bias values in a layer
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        private IVector getBiasVector(int layer)
+        {
+            IVector biasVector = MathFactory.CreateVector(this.LayerCount[layer]);
+
+            for(int i = 0; i < this.LayerCount[layer]; i++)
+            {
+                biasVector[i] = this.Layers.ElementAt(layer).ElementAt(i).Bias;
+            }
+
+            return biasVector;
+        }
+
+        private IMatrix getConnectionMatrix(int layer)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
