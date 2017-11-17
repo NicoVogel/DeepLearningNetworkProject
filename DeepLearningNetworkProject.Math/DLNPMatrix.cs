@@ -1,5 +1,4 @@
-﻿using DLNP.Entities.Interfaces.Business.Models;
-using System;
+﻿using System;
 
 namespace DLNP.Math
 {
@@ -26,9 +25,21 @@ namespace DLNP.Math
             }
         }
 
-        public int Rows { get => m_components.GetLength(0); }
+        public int Rows
+        {
+            get
+            {
+                return m_components.GetLength(0);
+            }
+        }
 
-        public int Columns { get => m_components.GetLength(1); }
+        public int Columns
+        {
+            get
+            {
+                return m_components.GetLength(1);
+            }
+        }
 
         #endregion
 
