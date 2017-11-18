@@ -20,5 +20,7 @@ namespace DLNP.Entities.Interfaces.Business.Models
         /// Number of columns in this matrix
         /// </summary>
         int Columns { get; }
+
+        IVector Mul(IVector v);
     }
 }

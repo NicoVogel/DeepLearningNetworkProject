@@ -14,5 +14,7 @@ namespace DLNP.Entities.Interfaces.Business.Models
 
         int FirstLayerCount { get; }
 
+        void CalculateLayerValues(int layer);
+
     }
 }

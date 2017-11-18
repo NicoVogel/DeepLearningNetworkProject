@@ -56,6 +56,28 @@ namespace DLNP.Math
 
         #region Operators
 
+        public IVector Mul(IVector v)
+        {
+            if (this.Columns == v.Size)
+            {
+                DLNPVector result = new DLNPVector(v.Size);
+
+                for (int m = 0; m < v.Size; m++)
+                {
+                    for (int i = 0; i < v.Size; i++)
+                    {
+                        result[m] += this[m, i] * v[i];
+                    }
+                }
+
+                return result;
+            }
+            else
+            {
+                throw new InvalidOperationException("Matrix and vector size are not compatible!");
+            }
+        }
+
         /// <summary>
         /// Multiplication of two matrices.
         /// Colum size from matrix a must equal row size from matrix b.

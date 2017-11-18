@@ -89,6 +89,22 @@ namespace DLNP.Entities.Models
 
         #endregion
 
+        #region Public Methods
+
+        public void CalculateLayerValues(int layer)
+        {
+            if (layer < 0 || layer >= this.Layers.Count)
+                throw new ArgumentException($"Layer {layer} does not exist");
+
+            IVector valueVector = getConnectionWeightMatrix(layer).Mul(getValueVector(layer)).Add(getBiasVector(layer));
+
+            for(int i = 0; i < valueVector.Size; i++)
+            {
+                this.Layers[layer][i].Value = valueVector[i];
+            }
+        }
+
+        #endregion
 
         #region Private Methods
 

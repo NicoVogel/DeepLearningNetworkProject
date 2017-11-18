@@ -19,5 +19,7 @@ namespace DLNP.Entities.Interfaces.Business.Models
         /// Number of components this vector contains
         /// </summary>
         int Size { get; }
+
+        IVector Add(IVector v);
     }
 }

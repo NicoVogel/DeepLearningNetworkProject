@@ -68,6 +68,25 @@ namespace DLNP.Math
 
         #region Operators
 
+        public IVector Add(IVector v)
+        {
+            if (this.Size == v.Size)
+            {
+                DLNPVector result = new DLNPVector(this.Size);
+
+                for (int i = 0; i < this.Size; i++)
+                {
+                    result[i] = this[i] + v[i];
+                }
+
+                return result;
+            }
+            else
+            {
+                throw new InvalidOperationException("Vectors must be of the same size!");
+            }
+        }
+
         public static DLNPVector operator +(DLNPVector a, DLNPVector b)
         {
             if (a.Size == b.Size)
