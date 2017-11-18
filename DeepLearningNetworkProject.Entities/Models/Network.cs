@@ -23,7 +23,9 @@ namespace DLNP.Entities.Models
         #region Properties
 
 
-
+        /// <summary>
+        /// Get count of neurons in the first layer
+        /// </summary>
         public int FirstLayerCount
         {
             get
@@ -32,6 +34,9 @@ namespace DLNP.Entities.Models
             }
         }
 
+        /// <summary>
+        /// Get count of neurons in a layer
+        /// </summary>
         public IList<int> LayerCount
         {
             get
@@ -40,6 +45,9 @@ namespace DLNP.Entities.Models
             }
         }
 
+        /// <summary>
+        /// Get list with all layers
+        /// </summary>
         public IList<IList<INode>> Layers
         {
             get
@@ -84,6 +92,27 @@ namespace DLNP.Entities.Models
 
         #region Private Methods
 
+
+        /// <summary>
+        /// Get a vector with all bias values in a layer
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        private IVector getValueVector(int layer)
+        {
+            if (layer < 0 || layer >= this.Layers.Count)
+                throw new ArgumentException($"Layer {layer} does not exist");
+
+            IVector valueVector = MathFactory.CreateVector(this.LayerCount[layer]);
+
+            for (int i = 0; i < this.LayerCount[layer]; i++)
+            {
+                valueVector[i] = this.Layers.ElementAt(layer).ElementAt(i).Value;
+            }
+
+            return valueVector;
+        }
+
         /// <summary>
         /// Get a vector with all bias values in a layer
         /// </summary>
@@ -91,6 +120,9 @@ namespace DLNP.Entities.Models
         /// <returns></returns>
         private IVector getBiasVector(int layer)
         {
+            if (layer < 0 || layer >= this.Layers.Count)
+                throw new ArgumentException($"Layer {layer} does not exist");
+
             IVector biasVector = MathFactory.CreateVector(this.LayerCount[layer]);
 
             for(int i = 0; i < this.LayerCount[layer]; i++)
@@ -101,9 +133,25 @@ namespace DLNP.Entities.Models
             return biasVector;
         }
 
-        private IMatrix getConnectionMatrix(int layer)
+        /// <summary>
+        /// Get all connection weights between a layer and its input layer
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        private IMatrix getConnectionWeightMatrix(int layer)
         {
-            throw new NotImplementedException();
+            if (layer < 1)
+                throw new ArgumentException($"Can't get connection matrix for layer {layer}");
+
+            IMatrix connectionMatrix = MathFactory.CreateMatrix(this.LayerCount[layer], this.LayerCount[layer - 1]);
+
+            for(int m = 0; m < this.LayerCount[layer]; m++)
+            {
+                for (int n = 0; n < this.LayerCount[layer - 1]; n++)
+                    connectionMatrix[m, n] = this.Layers[layer][m].Connections[n].Weight;
+            }
+
+            return connectionMatrix;
         }
 
         #endregion
