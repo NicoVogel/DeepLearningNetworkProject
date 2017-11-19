@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLearningNetworkProject", "DeepLearningNetworkProject\DeepLearningNetworkProject.csproj", "{90FB19A7-9162-4169-B198-F773C3365CA2}"
 EndProject
@@ -25,6 +25,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLearningNetworkProject.Data.MNIST", "DeepLearningNetworkProject.Data.MNIST\DeepLearningNetworkProject.Data.MNIST.csproj", "{F58CDF4F-0E73-435F-888B-9E6AD1522457}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLearningNetworkProject.Data.Network", "DeepLearningNetworkProject.Data.Network\DeepLearningNetworkProject.Data.Network.csproj", "{306F91E0-6E26-4A56-BF58-AFBB3742D300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLearningNetworkProject.Console", "DeepLearningNetworkProject.Console\DeepLearningNetworkProject.Console.csproj", "{16B8904A-1C2F-46D3-8B2A-671B934D3B1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,10 @@ Global
 		{306F91E0-6E26-4A56-BF58-AFBB3742D300}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{306F91E0-6E26-4A56-BF58-AFBB3742D300}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{306F91E0-6E26-4A56-BF58-AFBB3742D300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B8904A-1C2F-46D3-8B2A-671B934D3B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B8904A-1C2F-46D3-8B2A-671B934D3B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B8904A-1C2F-46D3-8B2A-671B934D3B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B8904A-1C2F-46D3-8B2A-671B934D3B1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{2A18A2DC-3557-4939-922A-E9373FACBFE8} = {BBA0D12C-918C-4A25-951B-3B935CB76C5D}
 		{F58CDF4F-0E73-435F-888B-9E6AD1522457} = {BBA0D12C-918C-4A25-951B-3B935CB76C5D}
 		{306F91E0-6E26-4A56-BF58-AFBB3742D300} = {BBA0D12C-918C-4A25-951B-3B935CB76C5D}
+		{16B8904A-1C2F-46D3-8B2A-671B934D3B1F} = {475922E5-2F7E-466F-8643-B3E24229E1FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0565966-DD85-4944-B44F-1705AB6BF5E4}
