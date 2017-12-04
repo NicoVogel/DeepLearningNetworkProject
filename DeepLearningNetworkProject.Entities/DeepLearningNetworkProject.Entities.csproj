@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="Interfaces\Factories\Connection\IBusinessFactoryExtension.cs" />
-    <Compile Include="Interfaces\Factories\Connection\IDataFactoryExtension.cs" />
     <Compile Include="Interfaces\Factories\IBusinessFactory.cs" />
     <Compile Include="Interfaces\Factories\IDataFactory.cs" />
     <Compile Include="Interfaces\Business\IProgramController.cs" />

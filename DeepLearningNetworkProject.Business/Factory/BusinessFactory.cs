@@ -1,9 +1,10 @@
 ﻿
-using DLNP.Entities.Interfaces.Data;
 using DLNP.Entities.Interfaces.Factories;
-using DLNP.Data;
 using DLNP.Entities.Interfaces.Factories.Connection;
 using DLNP.Data.Factory;
+using DLNP.Math.Factory;
+using DLNP.Entities.Factory;
+using DLNP.Entities.Interfaces.Business;
 
 namespace DLNP.Business.Factory
 {
@@ -13,7 +14,10 @@ namespace DLNP.Business.Factory
         #region Private Variables
 
 
-        private IDataFactoryExtension m_dfe;
+        private IDataFactory m_dfe;
+        private IEntityFactory m_ef;
+        private IMathFactory m_mf;
+        private IProgramController m_programController;
 
 
         #endregion
@@ -22,19 +26,34 @@ namespace DLNP.Business.Factory
 
 
 
-        public IDataFactoryExtension DataFactory
+        public IDataFactory DataFactory
         {
             get
             {
                 if (m_dfe == null)
-                    m_dfe = new DataFactory();
+                    m_dfe = new DataFactory(this.EntityFactory);
                 return m_dfe;
             }
         }
 
         public IEntityFactory EntityFactory
         {
-            get { return this.DataFactory.EntityFactory; }
+            get
+            {
+                if (m_ef == null)
+                    m_ef = new EntityFactory(this.MathFactory);
+                return m_ef;
+            }
+        }
+
+        public IMathFactory MathFactory
+        {
+            get
+            {
+                if (m_mf == null)
+                    m_mf = new MathFactory();
+                return m_mf;
+            }
         }
 
 
@@ -56,9 +75,14 @@ namespace DLNP.Business.Factory
         #endregion
 
 
-        public IDataManager CreateDataManager()
+
+        public IProgramController CreateProgramController()
         {
-            return new DataManager(this.DataFactory);
+            if(m_programController == null)
+                m_programController = new ProgramController(this.EntityFactory, this, this.DataFactory);
+
+            return m_programController;
         }
+
     }
 }

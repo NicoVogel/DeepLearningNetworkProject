@@ -1,8 +1,5 @@
 ﻿using DLNP.Entities.Interfaces.Business.Models;
 using DLNP.Entities.Interfaces.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace DLNP.Math.Factory
 {

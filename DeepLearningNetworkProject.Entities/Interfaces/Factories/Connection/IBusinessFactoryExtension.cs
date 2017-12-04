@@ -8,7 +8,7 @@ namespace DLNP.Entities.Interfaces.Factories.Connection
         /// <summary>
         /// Connection to the data factory
         /// </summary>
-        IDataFactoryExtension DataFactory { get; }
+        IDataFactory DataFactory { get; }
 
         /// <summary>
         /// Connection to the entity factory

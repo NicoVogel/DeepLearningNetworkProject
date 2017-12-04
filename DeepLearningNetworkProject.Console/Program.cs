@@ -1,11 +1,7 @@
 ﻿using DLNP.Entities.Interfaces.Business;
 using DLNP.Entities.Interfaces.Factories;
 using DLNP.Factory;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeepLearningNetworkProject.Console
 {

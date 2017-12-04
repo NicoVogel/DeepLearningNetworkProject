@@ -83,7 +83,7 @@ namespace DLNP.Entities.Models
         public Network(IEntityFactory ef, IMathFactory mf)
         {
             this.m_ef = ef;
-
+            this.m_mf = mf;
         }
 
 

@@ -3,12 +3,32 @@ using DLNP.Entities.Interfaces.Factories;
 using DLNP.Entities.Models;
 using System.Collections.Generic;
 using DLNP.Entities.Interfaces.Business.Models;
-using System;
 
 namespace DLNP.Entities.Factory
 {
     public class EntityFactory : IEntityFactory
     {
+
+        #region private variables
+
+
+        private IMathFactory m_mf;
+
+
+        #endregion
+
+        #region Properties
+
+
+
+        public IMathFactory MathFactory
+        {
+            get { return m_mf; }
+        }
+
+
+
+        #endregion
 
         #region Constructor
 
@@ -17,10 +37,11 @@ namespace DLNP.Entities.Factory
         /// <summary>
         /// default constructor
         /// </summary>
-        public EntityFactory()
+        public EntityFactory(IMathFactory mf)
         {
-
+            this.m_mf = mf;
         }
+
 
 
         #endregion
@@ -51,7 +72,7 @@ namespace DLNP.Entities.Factory
         /// <returns></returns>
         public INetwork CreateEmptyNetwork()
         {
-            return new Network(this);
+            return new Network(this, this.MathFactory);
         }
 
         /// <summary>

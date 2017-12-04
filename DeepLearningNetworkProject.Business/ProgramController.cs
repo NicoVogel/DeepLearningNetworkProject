@@ -16,6 +16,7 @@ namespace DLNP.Business
 
         private IEntityFactory m_ef;
         private IBusinessFactory m_bf;
+        private IDataFactory m_df;
         private IList<INetworkInputData> m_data;
         private IDataManager m_dm;
         private INetwork m_net;
@@ -52,7 +53,7 @@ namespace DLNP.Business
             get
             {
                 if (m_dm == null)
-                    m_dm = this.m_bf.CreateDataManager();
+                    m_dm = this.m_df.CreateDataManager();
                 return m_dm;
             }
         }
@@ -87,10 +88,11 @@ namespace DLNP.Business
         /// <summary>
         /// default constructor
         /// </summary>
-        public ProgramController(IEntityFactory ef, IBusinessFactory bf)
+        public ProgramController(IEntityFactory ef, IBusinessFactory bf, IDataFactory df)
         {
             this.m_ef = ef;
             this.m_bf = bf;
+            this.m_df = df;
         }
 
 

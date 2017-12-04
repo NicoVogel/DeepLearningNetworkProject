@@ -1,15 +1,17 @@
 ﻿
 
-using DLNP.Entities.Interfaces.Data;
+using DLNP.Entities.Interfaces.Business;
+
 
 namespace DLNP.Entities.Interfaces.Factories
 {
     public interface IBusinessFactory
     {
+
         /// <summary>
-        /// create a new instance of a <see cref="IDataManager"/> object
+        /// create a new <see cref="IProgramController"/> object
         /// </summary>
         /// <returns></returns>
-        IDataManager CreateDataManager();
+        IProgramController CreateProgramController();
     }
 }

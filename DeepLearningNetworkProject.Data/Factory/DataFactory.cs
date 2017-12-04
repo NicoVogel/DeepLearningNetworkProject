@@ -1,22 +1,20 @@
 ﻿
 using DLNP.Data.MNIST;
 using DLNP.Data.Network;
-using DLNP.Entities.Factory;
 using DLNP.Entities.Interfaces.Data;
 using DLNP.Entities.Interfaces.Factories;
-using DLNP.Entities.Interfaces.Factories.Connection;
 using System.Collections.Generic;
 
 namespace DLNP.Data.Factory
 {
-    public class DataFactory : IDataFactory, IDataFactoryExtension
+    public class DataFactory : IDataFactory
     {
 
         #region Private variables
 
 
 
-        private IEntityFactory m_bf;
+        private IEntityFactory m_ef;
 
 
 
@@ -28,12 +26,7 @@ namespace DLNP.Data.Factory
 
         public IEntityFactory EntityFactory
         {
-            get
-            {
-                if (m_bf == null)
-                    m_bf = new EntityFactory();
-                return m_bf;
-            }
+            get { return m_ef; }
         }
 
 
@@ -47,8 +40,9 @@ namespace DLNP.Data.Factory
         /// <summary>
         /// default constructor
         /// </summary>
-        public DataFactory()
+        public DataFactory(IEntityFactory ef)
         {
+            this.m_ef = ef;
         }
 
 
@@ -75,7 +69,11 @@ namespace DLNP.Data.Factory
         {
             return new NetworkFileManager();
         }
-
+        
+        public IDataManager CreateDataManager()
+        {
+            return new DataManager(this);
+        }
 
     }
 }

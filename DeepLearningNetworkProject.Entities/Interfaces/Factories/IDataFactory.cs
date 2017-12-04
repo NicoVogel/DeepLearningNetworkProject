@@ -17,5 +17,11 @@ namespace DLNP.Entities.Interfaces.Factories
         /// </summary>
         /// <returns></returns>
         INetworkFileManager CreateNetworkFileManager();
+
+        /// <summary>
+        /// create a new instance of a <see cref="IDataManager"/> object
+        /// </summary>
+        /// <returns></returns>
+        IDataManager CreateDataManager();
     }
 }

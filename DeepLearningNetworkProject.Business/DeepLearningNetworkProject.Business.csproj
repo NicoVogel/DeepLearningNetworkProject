@@ -54,6 +54,10 @@
       <Project>{CDD36AAA-A952-488A-A857-CC67E963BCF9}</Project>
       <Name>DeepLearningNetworkProject.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DeepLearningNetworkProject.Math\DeepLearningNetworkProject.Math.csproj">
+      <Project>{ff164def-81c1-4eec-86f9-5527ec4fa353}</Project>
+      <Name>DeepLearningNetworkProject.Math</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

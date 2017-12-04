@@ -1,9 +1,8 @@
 ﻿
-using DLNP.Entities.Interfaces.Business;
 using DLNP.Entities.Interfaces.Factories;
 using DLNP.Business.Factory;
 using DLNP.Entities.Interfaces.Factories.Connection;
-using DLNP.Business;
+using DLNP.Entities.Interfaces.Business;
 
 namespace DLNP.Factory
 {
@@ -36,11 +35,6 @@ namespace DLNP.Factory
             get { return this.BusinessFactory.EntityFactory; }
         }
 
-        public IDataFactory DataFactory
-        {
-            get { return this.BusinessFactory.DataFactory; }
-        }
-
 
         #endregion
 
@@ -59,10 +53,12 @@ namespace DLNP.Factory
 
 
         #endregion
-        
+
+
+
         public IProgramController CreateProgramController()
         {
-            return new ProgramController(this.EntityFactory, this.BusinessFactory);
+            return this.BusinessFactory.CreateProgramController();
         }
     }
 }
