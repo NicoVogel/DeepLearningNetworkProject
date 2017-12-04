@@ -249,9 +249,9 @@ namespace DLNP.Business
             if (currentLayer == 0)
                 return Entities.NodeType.Input;
             else if ((currentLayer + 1) == layerCount)
-                return Entities.NodeType.Normal;
-            else
                 return Entities.NodeType.Output;
+            else
+                return Entities.NodeType.Normal;
         }
 
         /// <summary>
